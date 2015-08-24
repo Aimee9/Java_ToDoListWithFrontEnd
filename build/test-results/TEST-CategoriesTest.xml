@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="CategoriesTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2015-08-24T23:41:43" hostname="epicodus-114.local" time="0.174">
+  <properties/>
+  <testcase name="equals_returnsTrueIfDescriptionsAretheSame" classname="CategoriesTest" time="0.078"/>
+  <testcase name="equals_returnsSavedCategory" classname="CategoriesTest" time="0.042"/>
+  <testcase name="all_emptyAtFirst" classname="CategoriesTest" time="0.013"/>
+  <testcase name="find_findsCategoriesInDatabase_true" classname="CategoriesTest" time="0.021"/>
+  <testcase name="save_assignsIdToCategory" classname="CategoriesTest" time="0.019"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
