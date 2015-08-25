@@ -3,22 +3,22 @@ import org.sql2o.*;
 
 public class Categories {
   private int id;
-  private String type;
+  private String name;
 
   public int getId() {
     return id;
   }
 
-  public String getType() {
-    return type;
+  public String getName() {
+    return name;
   }
 
-  public Categories(String type) {
-    this.type = type;
+  public Categories(String name) {
+    this.name = name;
   }
 
   public static List<Categories> all() {
-    String sql = "SELECT id, type FROM categories";
+    String sql = "SELECT id, name FROM categories";
     try(Connection con = DB.sql2o.open()) {
       return con.createQuery(sql).executeAndFetch(Categories.class);
     }
@@ -30,16 +30,16 @@ public class Categories {
       return false;
     } else {
       Categories newCategories = (Categories) otherCategories;
-      return this.getType().equals(newCategories.getType()) &&
+      return this.getName().equals(newCategories.getName()) &&
         this.getId() == newCategories.getId();
       }
     }
 
     public void save() {
       try(Connection con = DB.sql2o.open()) {
-        String sql = "INSERT INTO categories(type) VALUES (:type)";
+        String sql = "INSERT INTO categories(name) VALUES (:name)";
         this.id = (int) con.createQuery(sql, true)
-         .addParameter("type", this.type)
+         .addParameter("name", this.name)
          .executeUpdate()
          .getKey();
       }
