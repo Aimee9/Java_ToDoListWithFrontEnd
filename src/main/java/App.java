@@ -28,6 +28,7 @@ public class App {
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
 
+
     get("/category/:id", (request, response) -> {
       HashMap<String, Object> model = new HashMap<String, Object>();
       Categories name = Categories.find(Integer.parseInt(request.params(":id")));
@@ -36,5 +37,21 @@ public class App {
       model.put("template", "templates/catname.vtl");
       return new ModelAndView(model, layout);
       }, new VelocityTemplateEngine());
+
+
+    post("/category/:id/task", (request, response) -> {
+      HashMap<String, Object> model = new HashMap<String, Object>();
+      Categories name = Categories.find(Integer.parseInt(request.params(":id")));
+
+      String taskName = request.queryParams("taskName");
+      Task newTask = new Task(taskName);
+      newTask.save();
+
+      model.put("name", name);
+      model.put("task", Task.all());
+      model.put("template", "templates/catname.vtl");
+      return new ModelAndView(model, layout);
+      }, new VelocityTemplateEngine());
+
   }
 }
